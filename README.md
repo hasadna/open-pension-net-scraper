@@ -27,7 +27,7 @@ Not yet.
 
 Just fork and do a pull request (;
 
-[travis-image]: https://api.travis-ci.org/nirgn975/open-pension-net-scraper.svg?branch=master
-[travis-url]: https://travis-ci.org/nirgn975/open-pension-net-scraper
+[travis-image]: https://api.travis-ci.org/hasadna/open-pension-net-scraper.svg?branch=master
+[travis-url]: https://travis-ci.org/hasadna/open-pension-net-scraper
 
 
