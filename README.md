@@ -2,14 +2,16 @@
 
 [![Build Status][travis-image]][travis-url]
 
-Just like [Open Pension Scraper](https://github.com/nirgn975/open_pension_scraper#readme),
-this repo contains tools and [meta]data for the purpose of extracting publicly-available
+This repo contains tools and [meta]data for the purpose of extracting publicly-available
 online information to be used by Open Pension.
 
-Unlike *Open Pension Scraper*, this repo deals with machine-readable sources (either via an official
-API or through "XML/JSON scrapping").
-
 Open Pension is a "Hasadna" project, aiming to reveal the secrets behind the Israeli pension market.
+
+#### Note to contributors
+You should prefer using machine-readble information
+(either via an official API or through "XML/JSON scraping").
+For scraping information that is only available as html, consider using [Scrapy](https://scrapy.org/).
+See example [here](https://github.com/nirgn975/open_pension_scraper#readme).
 
 ## Pre Requirements
 
