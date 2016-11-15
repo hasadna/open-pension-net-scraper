@@ -23,11 +23,5 @@ Not yet.
 
 Just fork and do a pull request (;
 
-### Note:
-
-You should prefer using machine-readble sources
-(either via an official API or through "XML/JSON scraping").
-For scraping information that is only available as html, consider using [Scrapy](https://scrapy.org/).
-
 [travis-image]: https://api.travis-ci.org/hasadna/open-pension-net-scraper.svg?branch=master
 [travis-url]: https://travis-ci.org/hasadna/open-pension-net-scraper
