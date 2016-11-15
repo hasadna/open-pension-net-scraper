@@ -14,4 +14,3 @@ install:
 script:
   # Run code sniffer to verify pep8
   - pycodestyle --show-source --max-line-length=119 --show-pep8 .
-
