@@ -10,26 +10,49 @@ Open Pension is a "Hasadna" project, aiming to reveal the secrets behind the Isr
 ## Pre Requirements
 
 * Make sure you have Python `3.x` and `virtualenv` installed.
+* For batch-dumping, you'll also need a [redis](http://redis.io/) server.
 
 ## Installation
-```shell
-virtualenv -p python3 venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+
+* `virtualenv -p python3 venv`
+* `./envrun.sh pip install -r requirements.txt`
+
+**Note:** if you `source venv/bin/activate` in a shell,
+you can skip the `./envrun.sh` in commands here
+(still, it's handy if you open a shell only to run `rq worker`).
+
+If you want `rq-dashboard` (for monitoring batch jobs via browser):
+
+* `./envrun.sh pip install rq-dashboard`
 
 ## Running
 
-**Note:** remember to `source venv/bin/activate` on each new shell.
-
 ### Dump portfolio of a single month
 
-For exmaple: `python web-sources/gemelnet.py 101 2016 1`
+[this is something you don't need redis for]
+
+For exmaple: `./envrun.sh python web-sources/gemelnet.py 101 2016 1`
 would write Jan 2016 portfolio of kupa 101 to `data/101-2016-01.csv`.
+
+### Batch dump portfolios over a period
+
+run these on separate shells:
+
+* [If you don't have a running redis server] `redis-server`
+
+* `./envrun.sh rq worker`
+
+Exmaple query: `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4`
+would dump all months between Aug 1999 and April 2002 (into separate files).
+
+Monitoring jobs:
+
+* From console: `./envrun.sh rq info`
+* via browser: `./envrun.sh rq-dashboard`
 
 ## Tests
 
-Not yet.
+Only pep8 so far ;)
 
 ## Contribute
 
