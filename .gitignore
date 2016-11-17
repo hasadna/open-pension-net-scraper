@@ -1,4 +1,6 @@
-web_sources/data/*.csv
+README.html
+data/*.csv
+dump.rdb
 
 ## -------------------
 
