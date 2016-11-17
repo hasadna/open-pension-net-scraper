@@ -41,6 +41,12 @@ def save_csv_monthly_portfolio(kupa_id, year, month):
     return filepath
 
 if __name__=='__main__':
-    print('fetching...')
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("kupa", type=int, help="numeric code of kupa")
+    parser.add_argument("year", type=int)
+    parser.add_argument("month", type=int)
+    args = parser.parse_args()
+    print('downloading...')
     print('saved {}.'.format(
-        save_csv_monthly_portfolio(101, 2016, 9)))
+        save_csv_monthly_portfolio(args.kupa, args.year, args.month)))
