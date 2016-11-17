@@ -1,3 +1,7 @@
+data/*.csv
+
+## -------------------
+
 # Created by https://www.gitignore.io/api/python,osx,linux,windows
 
 ### Python ###

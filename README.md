@@ -9,11 +9,23 @@ Open Pension is a "Hasadna" project, aiming to reveal the secrets behind the Isr
 
 ## Pre Requirements
 
-* Make sure you have Python 3.x and pip installed.
+* Make sure you have Python `3.x` and `virtualenv` installed.
 
 ## Installation
+```
+virtualenv -p python3 venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-Not yet.
+## Running
+
+**Note:** remember to `source venv/bin/activate` on each new shell.
+
+### Dump portfolio of a single month
+
+For exmaple: `python web-sources/gemelnet.py 101 2016 1`
+would write Jan 2016 portfolio of kupa 101 to `data/101-2016-01.csv`.
 
 ## Tests
 
