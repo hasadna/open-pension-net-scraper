@@ -1,6 +1,6 @@
 from redis import Redis
 from rq import Queue
-from web_sources.gemelnet import save_csv_monthly_portfolio 
+from web_sources.gemelnet import save_csv_monthly_portfolio
 
 
 def get_timeline(kupa, from_year, from_month, to_year, to_month):
