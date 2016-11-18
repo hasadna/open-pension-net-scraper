@@ -30,4 +30,3 @@ if __name__ == '__main__':
         get_timeline(
             args.kupa, args.from_year, args.from_month,
             args.to_year, args.to_month)))
-
