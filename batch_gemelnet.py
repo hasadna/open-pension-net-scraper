@@ -14,6 +14,7 @@ def get_timeline(kupa, from_year, from_month, to_year, to_month):
             else:
                 year += 1
                 month = 1
+    return len(q)
 
 
 if __name__ == '__main__':
@@ -25,5 +26,8 @@ if __name__ == '__main__':
     parser.add_argument("to_year", type=int)
     parser.add_argument("to_month", type=int)
     args = parser.parse_args()
-    get_timeline(
-        args.kupa, args.from_year, args.from_month, args.to_year, args.to_month)
+    print("{} jobs in queue".format(
+        get_timeline(
+            args.kupa, args.from_year, args.from_month,
+            args.to_year, args.to_month)))
+
