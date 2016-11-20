@@ -12,7 +12,7 @@ Open Pension is a "Hasadna" project, aiming to reveal the secrets behind the Isr
 * Make sure you have Python `3.x` and `virtualenv` installed.
 
 ## Installation
-```
+```shell
 virtualenv -p python3 venv
 source venv/bin/activate
 pip install -r requirements.txt
