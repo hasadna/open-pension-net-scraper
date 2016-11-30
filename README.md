@@ -34,21 +34,37 @@ If you want `rq-dashboard` (for monitoring batch jobs via browser):
 For exmaple: `./envrun.sh python web-sources/gemelnet.py 101 2016 1`
 would write Jan 2016 portfolio of kupa 101 to `data/101-2016-01.csv`.
 
-### Batch dump portfolios over a period
+### Batch dump reports over a period
 
 run these on separate shells:
 
 * [If you don't have a running redis server] `redis-server`
 
-* `./envrun.sh rq worker`
+* `./envrun.sh rq worker` (executes the jobs `batch_gemelnet.py` queues)
 
-Exmaple query: `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4`
-would dump all months between Aug 1999 and April 2002 (into separate files).
+#### Dumping portfolios
 
-Monitoring jobs:
+For example: `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4`
+would queue jobs that dump portfolios of kupa 101 for all months between
+Aug 1999 and April 2002 into `data/101-1999-08.csv` ... `data/101-2002-04.csv`
+
+#### Dumping performance reports
+
+For example:
+`./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 --type performance`
+(or `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 -t p`)
+would queue a single job to fetch a performance report for kupa 101 between Aug
+1999 and April 2002 and dump it
+into `data/perf-101-1999-08-2002-04.csv`.
+
+
+#### Monitoring/controlling job execution
 
 * From console: `./envrun.sh rq info`
 * via browser: `./envrun.sh rq-dashboard`
+
+You can suspend job execution with `./envrun.sh rq suspend`
+and resume work with `./envrun.sh rq resume`
 
 ## Tests
 
