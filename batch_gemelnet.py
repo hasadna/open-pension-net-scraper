@@ -10,7 +10,7 @@ def get_asset_timeline(kupa, from_year, from_month, to_year, to_month):
     year = args.from_year
     month = args.from_month
     q = Queue(connection=Redis())
-    while year < args.to_year or year == args.to_year and month < args.to_month:
+    while year < args.to_year or year == args.to_year and month <= args.to_month:
             q.enqueue(save_csv_monthly_portfolio, args=(args.kupa, year, month))
             if month < 12:
                 month += 1
