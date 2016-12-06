@@ -51,17 +51,25 @@ Aug 1999 and April 2002 into `data/101-1999-08.csv` ... `data/101-2002-04.csv`
 #### Dumping performance reports
 
 For example:
-`./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 --type performance`
+`./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 --type p`
 (or `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 -t p`)
 would queue a single job to fetch a performance report for kupa 101 between Aug
 1999 and April 2002 and dump it
 into `data/perf-101-1999-08-2002-04.csv`.
 
+#### Incremental dumping of all kupot
+
+`./dump-latest.sh [N]` queues dumps of portfolios for all kupot `N` months ago,
+and performance reports for all kupot for the year between `N+11` and `N` months ago.
+
+Default for `N` is 2 (data for last month isn't available early in the month,
+while data for 2 months ago is always available).
+
 
 #### Monitoring/controlling job execution
 
-* From console: `./envrun.sh rq info`
-* via browser: `./envrun.sh rq-dashboard`
+* Monitor from console: `./envrun.sh rq info`
+* Monitor via browser: `./envrun.sh rq-dashboard`
 
 You can suspend job execution with `./envrun.sh rq suspend`
 and resume work with `./envrun.sh rq resume`
