@@ -74,6 +74,16 @@ while data for 2 months ago is always available).
 You can suspend job execution with `./envrun.sh rq suspend`
 and resume work with `./envrun.sh rq resume`
 
+### Utilities
+
+[Don't require redis]
+
+#### Generate CSV with totals of all portfolios for a given month
+
+For example:
+`./envrun.sh totals.py 2016 9` would generate `data/totals-2016-09.csv` with 
+"bottom lines" of all `{kupa id}-2016-09.csv` portfolios.
+
 ## Tests
 
 Only pep8 so far ;)
