@@ -160,6 +160,6 @@ $RECYCLE.BIN/
 
 
 ### Custom ###
-data/*.csv
+data/**/*.csv
 README.html
 dump.rdb

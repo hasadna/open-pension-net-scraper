@@ -31,8 +31,8 @@ If you want `rq-dashboard` (for monitoring batch jobs via browser):
 
 [this is something you don't need redis for]
 
-For exmaple: `./envrun.sh python web-sources/gemelnet.py 101 2016 1`
-would write Jan 2016 portfolio of kupa 101 to `data/101-2016-01.csv`.
+For exmaple: `./envrun.sh python -m web-sources.gemelnet 101 2016 1`
+would write Jan 2016 portfolio of kupa 101 to `data/gemelnet-monthly-portfolios/101-2016-01.csv`.
 
 ### Batch dump reports over a period
 
@@ -46,7 +46,7 @@ run these on separate shells:
 
 For example: `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4`
 would queue jobs that dump portfolios of kupa 101 for all months between
-Aug 1999 and April 2002 into `data/101-1999-08.csv` ... `data/101-2002-04.csv`
+Aug 1999 and April 2002 into `data/gemelnet-monthly-portfolios/101-1999-08.csv` ... `data/gemelnet-monthly-portfolios/101-2002-04.csv`
 
 #### Dumping performance reports
 
@@ -55,7 +55,7 @@ For example:
 (or `./envrun.sh python batch_gemelnet.py 101 1999 8 2002 4 -t p`)
 would queue a single job to fetch a performance report for kupa 101 between Aug
 1999 and April 2002 and dump it
-into `data/perf-101-1999-08-2002-04.csv`.
+into `data/gemelnet/perf-101-1999-08-2002-04.csv`.
 
 #### Incremental dumping of all kupot
 
@@ -81,7 +81,7 @@ and resume work with `./envrun.sh rq resume`
 #### Generate CSV with totals of all portfolios for a given month
 
 For example:
-`./envrun.sh totals.py 2016 9` would generate `data/totals-2016-09.csv` with 
+`./envrun.sh gemelnet_totals.py 2016 9` would generate `data/gemelnet/totals-2016-09.csv` with 
 "bottom lines" of all `{kupa id}-2016-09.csv` portfolios.
 
 ## Tests
