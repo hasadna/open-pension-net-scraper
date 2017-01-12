@@ -34,6 +34,10 @@ If you want `rq-dashboard` (for monitoring batch jobs via browser):
 For exmaple: `./envrun.sh python -m web-sources.gemelnet 101 2016 1`
 would write Jan 2016 portfolio of kupa 101 to `data/gemelnet-monthly-portfolios/101-2016-01.csv`.
 
+Pensianet allows dumping portfolios of all kranot in a single request: 
+`./envrun.sh python -m web-sources.pensianet 2016 1` would write `data/pensianet/2016-01.csv`
+containing portfolios of all kranot for Jan 2016.
+
 ### Batch dump reports over a period
 
 run these on separate shells:
@@ -57,10 +61,18 @@ would queue a single job to fetch a performance report for kupa 101 between Aug
 1999 and April 2002 and dump it
 into `data/gemelnet/perf-101-1999-08-2002-04.csv`.
 
-#### Incremental dumping of all kupot
+There's no `batch_pensianet.py` [yet?], but you can get performance for a 12 month period
+by using (for example) `./envrun.sh python -m web_sources.pensianet 2016 10 --type p` (or `-t p`).
+This would dump 11/2015-10/2016 performance of all kranot to `data/pensianet/perf-2015-11-2016-10.csv`.
+[This doesn't require redis].
+
+#### Monthly incremental dumping
 
 `./dump-latest.sh [N]` queues dumps of portfolios for all kupot `N` months ago,
 and performance reports for all kupot for the year between `N+11` and `N` months ago.
+
+It also dumps portfolios and performance of all pensianet kranot for the same periods,
+but these appear as single csv files (as opposed to a file per kupa in gemelnet).
 
 Default for `N` is 2 (data for last month isn't available early in the month,
 while data for 2 months ago is always available).
