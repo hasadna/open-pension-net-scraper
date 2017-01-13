@@ -5,9 +5,9 @@ import xml.etree.ElementTree as XML
 import requests
 import argparse
 import codecs
+import paths
 
 API_URL = 'http://gemelnet.mof.gov.il/tsuot/ui/tsuotHodXML.aspx'
-OUTPUT_DIR = 'data'
 
 
 def _parse_xml(xml):
@@ -51,7 +51,7 @@ Rerurns file path."""
     xml = _load_xml_monthly_portfolio(kupa_id, year, month)
     result = _parse_xml(xml)
     filepath = os.path.join(
-        OUTPUT_DIR,
+        paths.GEMELNET_MONTHLY_PORTFOLIO_PATH,
         '{}-{:04d}-{:02d}.csv'.format(kupa_id, year, month))
     outfile = open(filepath, 'w')
     outfile.write(str(codecs.BOM_UTF8, 'utf-8'))  # Help Windows detects UTF-8.
@@ -73,7 +73,7 @@ Rerurns file path."""
         kupa_id, from_year, from_month, to_year, to_month)
     result = _parse_xml(xml)
     filepath = os.path.join(
-        OUTPUT_DIR,
+        paths.GEMELNET_PATH,
         'perf-{}-{:04d}-{:02d}-{:04d}-{:02d}.csv'.format(
             kupa_id, from_year, from_month, to_year, to_month))
     outfile = open(filepath, 'w')

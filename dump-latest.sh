@@ -12,6 +12,12 @@ Y=$(date --date "$MONTHS_AGO months ago" +%4Y)
 M=$(date --date "$MONTHS_AGO months ago" +%2m)
 Yp=$(date --date "$MONTHS_AGO_P months ago" +%4Y)
 Mp=$(date --date "$MONTHS_AGO_P months ago" +%2m)
+
+# Dump pensianet portfolios and performance
+python -m web_sources.pensianet $Y $M
+python -m web_sources.pensianet $Y $M -t p
+
+# Queue (using rq/redis) gemelnet portfolio and perfomance for each kupa
 for k in $(sed -e 's/,.*//' -e 's/^[^0-9]//' < metadata/kupot.csv) ; do
 	echo $k
 	python batch_gemelnet.py $k $Y $M $Y $M

@@ -4,14 +4,14 @@ import os
 import csv
 import codecs
 import argparse
+import paths
 
 
 def compute_totals(year, month):
     result = []
-    for filename in sorted(glob('data/*-{:04}-{:02}.csv'.format(year, month))):
+    for filename in sorted(glob('{}/*-{:04}-{:02}.csv'.format(
+            paths.GEMELNET_MONTHLY_PORTFOLIO_PATH, year, month))):
         kupa = os.path.basename(filename).split('-')[0]
-        if not kupa[0].isdigit():
-            continue  # totals, performance, etc.
         total = Decimal(0)
         for i, r in enumerate(csv.reader(open(filename))):
             if not i:
@@ -21,7 +21,8 @@ def compute_totals(year, month):
             except InvalidOperation:
                 pass
         result.append([kupa, '{:.2f}'.format(total)])
-    outfilepath = 'data/totals-{:04d}-{:02d}.csv'.format(year, month)
+    outfilepath = '{}/totals-{:04d}-{:02d}.csv'.format(
+            paths.GEMELNET_PATH, year, month)
     outfile = open(outfilepath, 'w')
     outfile.write(str(codecs.BOM_UTF8, 'utf-8'))  # Help Windows detect UTF-8.
     sheet = csv.writer(outfile)
