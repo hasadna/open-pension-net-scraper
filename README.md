@@ -77,7 +77,6 @@ but these appear as single csv files (as opposed to a file per kupa in gemelnet)
 Default for `N` is 2 (data for last month isn't available early in the month,
 while data for 2 months ago is always available).
 
-
 #### Monitoring/controlling job execution
 
 * Monitor from console: `./envrun.sh rq info`
@@ -90,11 +89,16 @@ and resume work with `./envrun.sh rq resume`
 
 [Don't require redis]
 
-#### Generate CSV with totals of all portfolios for a given month
+#### Generate CSV with totals of all Gemelnet portfolios for a given month
 
 For example:
 `./envrun.sh gemelnet_totals.py 2016 9` would generate `data/gemelnet/totals-2016-09.csv` with 
 "bottom lines" of all `{kupa id}-2016-09.csv` portfolios.
+
+#### Batch lookup stock names at quotenet
+
+For example: `./envrun.sh python batch_quotenet_stock_names.py < sample-data/quotenet-queries.txt > something.csv`
+should generate something similar to `sample-data/quotenet-output.csv`.
 
 ## Tests
 
